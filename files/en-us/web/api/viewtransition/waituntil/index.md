@@ -47,7 +47,7 @@ This example demonstrates basic usage of the `waitUntil()` method to delay a vie
 
 #### HTML
 
-We include a {{htmlelement("div")}} element containing page content, which includes a {{htmlelement("p")}} element and a {{htmlelement("button")}} element that when pressed will change the displayed content. The paragraph includes an [`aria-live`](/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-live) attribute so that DOM updates are announced to screenreader users.
+We include a {{htmlelement("div")}} element containing page content, which includes a {{htmlelement("p")}} element and a {{htmlelement("button")}} element that when pressed will change the displayed content. The paragraph includes an [`aria-live`](/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-live) attribute so that DOM updates are announced to screen reader users.
 
 ```html live-sample___basic-waituntil
 <div class="page">
@@ -168,6 +168,11 @@ function btnHandler() {
 Next, we define the `updatePage()` function, which updates the page DOM. It toggles between setting the content paragraph `textContent` equal to the first and the second `pageContent` array elements.
 
 ```js live-sample___basic-waituntil
+const pageContent = [
+  "Hello! This is the first page.",
+  "Well, this is the second page.",
+];
+
 function updatePage() {
   if (content.textContent === pageContent[0]) {
     content.textContent = pageContent[1];
@@ -175,11 +180,6 @@ function updatePage() {
     content.textContent = pageContent[0];
   }
 }
-
-const pageContent = [
-  "Hello! This is the first page.",
-  "Well, this is the second page.",
-];
 ```
 
 Finally, we define the `showLog()` function — this sets the log paragraph's `textContent` to "View transition finished", waits for one second, then sets it back to an empty string.
